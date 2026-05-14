@@ -157,6 +157,28 @@
     content: "Соло · ";
     opacity: 0.7;
   }
+  .tag.book {
+    color: #ff9a9a;
+    background: color-mix(in srgb, #ff9a9a 14%, transparent);
+    border-color: color-mix(in srgb, #ff9a9a 38%, var(--line));
+    font-weight: 600;
+  }
+  @media (prefers-color-scheme: light) {
+    .tag.book { color: #b13b3b; }
+  }
+  .tag.book-opt {
+    color: var(--warn);
+    background: color-mix(in srgb, var(--warn) 14%, transparent);
+    border-color: color-mix(in srgb, var(--warn) 38%, var(--line));
+    font-weight: 600;
+  }
+  .tag.walkin {
+    color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent-2) 14%, transparent);
+    border-color: color-mix(in srgb, var(--accent-2) 38%, var(--line));
+    font-weight: 600;
+  }
+  .row .v a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent); text-underline-offset: 2px; }
   .row {
     padding: 10px 0;
     border-top: 1px solid var(--line);
@@ -264,210 +286,234 @@
     <b>Для одиночного гостя.</b> В Рейкьявике «золотой стандарт» — место у кухонной стойки (counter seating): вы в эпицентре, повар комментирует курс. В Вестфьордах и на Севере чаще встретите общие столы (communal seating) — формат викинг-пира, где разговор с соседями входит в концепцию. У каждой карточки помечен соло-формат.
   </div>
 
+  <div class="note" style="margin-top:8px;">
+    <b>Легенда брони.</b>
+    <span class="tag book" style="margin:0 2px;">бронь</span> — обязательна заранее;
+    <span class="tag book-opt" style="margin:0 2px;">желательна</span> — лучше забронировать, но шанс есть;
+    <span class="tag walkin" style="margin:0 2px;">walk-in</span> — заходите без брони.
+  </div>
+
   <!-- REYKJAVIK -->
   <h2 class="city" id="reykjavik">Город · <span>Рейкьявик</span></h2>
 
   <article class="card">
     <h3><span class="num">1</span>Matur og Drykkur</h3>
-    <div class="tags"><span class="tag solo">персональный сервис</span><span class="tag">Современная исландская</span><span class="tag">Ужин</span></div>
+    <div class="tags"><span class="tag book">бронь</span><span class="tag solo">персональный сервис</span><span class="tag">Современная исландская</span><span class="tag">Ужин</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Переосмысление традиционных рецептов XIX века — треска с маслом из водорослей, копчёная баранина, овечьи головы. Тёплое место в гавани Granda, соло-гости отмечают «крайне персональный» сервис; уютно с книгой.</p>
     <div class="row price"><div class="k">Обед</div><div class="v"><b>3,800–5,500</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v"><b>6,500–9,500</b> ISK · дегустация ~13,900</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ужин ежедн. 18:00–22:00 · обед чт–вс 12:00–14:30</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна (за 1–2 недели) · <a href="https://maturogdrykkur.is" target="_blank" rel="noopener">сайт</a> или <a href="https://dineout.is/maturogdrykkur" target="_blank" rel="noopener">Dineout</a></div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Grandagarður 2, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://maturogdrykkur.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Matur+og+Drykkur+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://maturogdrykkur.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Matur+og+Drykkur+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">2</span>Dill Restaurant</h3>
-    <div class="tags"><span class="tag solo">Kitchen Counter (1–2)</span><span class="tag">★ Michelin</span><span class="tag">New Nordic</span><span class="tag">Дегустация</span></div>
+    <div class="tags"><span class="tag book">бронь · за месяц+</span><span class="tag solo">Kitchen Counter (1–2)</span><span class="tag">★ Michelin</span><span class="tag">New Nordic</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Первая мишленовская звезда Исландии. Для одиночного гостя — место у Kitchen Counter (на 1–2): прямой контакт с командой во время 16–18 курсов «The Signature One». «The Short One» обычно требует двоих — берите Signature.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">не подаётся</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">Signature One <b>39,900–61,200</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ср–сб 18:00–22:00 · бронь за 2–4 недели, указать «Kitchen Counter»</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна за 2–4 недели · <a href="https://noona.app/dill" target="_blank" rel="noopener">noona.app/dill</a>. В комментарии указать «Kitchen Counter»</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Laugavegur 59, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://dillrestaurant.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Dill+Restaurant+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://dillrestaurant.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Dill+Restaurant+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">3</span>Grillmarkaðurinn</h3>
-    <div class="tags"><span class="tag solo">место у кухни</span><span class="tag">Гриль</span><span class="tag">Ужин</span></div>
+    <div class="tags"><span class="tag book">бронь</span><span class="tag solo">место у кухни</span><span class="tag">Гриль</span><span class="tag">Ужин</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">«Исландская роскошь»: открытый огонь, копчение, прямые связи с фермерами. Баранина, ангус, рыба. Соло-гостям часто предлагают «театр у кухни» — место с видом на работу поваров.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">бизнес-ланч <b>4,900</b> (2 блюда)</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v"><b>5,900–11,900</b> · Icelandic Feast 13,900</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Обед пн–пт 11:30–14:00 · ужин ежедн. 17:00–22:30</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна (за 1–2 недели) · <a href="https://grillmarkadurinn.is" target="_blank" rel="noopener">сайт</a>. Просить «Kitchen Counter»</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Lækjargata 2a, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://grillmarkadurinn.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Grillmarkadurinn+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://grillmarkadurinn.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Grillmarkadurinn+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">4</span>Þrír Frakkar</h3>
-    <div class="tags"><span class="tag solo">барная стойка</span><span class="tag">Традиционная</span><span class="tag">Hákarl · Puffin · Whale</span></div>
+    <div class="tags"><span class="tag book-opt">желательна бронь</span><span class="tag solo">барная стойка</span><span class="tag">Традиционная</span><span class="tag">Hákarl · Puffin · Whale</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Семейная легенда с 1989. Ферментированная акула, тупик, кит, овечьи головы — без театральности.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">рыба <b>3,200–4,500</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>4,800–7,900</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Пн–пт 11:30–14:30, 18:00–22:30 · сб–вс ужин</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Желательна на ужин (за 2–4 дня) · <a href="https://3frakkar.is" target="_blank" rel="noopener">сайт</a> или тел. +354 552 3939</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Baldursgata 14, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://3frakkar.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Thrir+Frakkar+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://3frakkar.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Thrir+Frakkar+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">5</span>Sægreifinn (Sea Baron)</h3>
-    <div class="tags"><span class="tag solo">общая лавка-бочка</span><span class="tag">Гавань</span><span class="tag">Lobster soup</span><span class="tag">Casual</span></div>
+    <div class="tags"><span class="tag walkin">walk-in</span><span class="tag solo">общая лавка-бочка</span><span class="tag">Гавань</span><span class="tag">Lobster soup</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Деревянный сарай у моря. Легендарный суп из лобстера, шашлычки из кита, морского чёрта, гребешка.</p>
     <div class="row price"><div class="k">Обед/Ужин</div><div class="v">суп <b>2,990</b> · шашлычок 2,490 · ~4,500 на полный приём</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 11:30–22:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Не нужна — заходите. В пик сезона возможна очередь 10–20 мин</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Geirsgata 8, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://maps.google.com/?q=Saegreifinn+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://www.dineout.is/saegreifinn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Saegreifinn+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">6</span>Messinn</h3>
-    <div class="tags"><span class="tag solo">best for solo lunch</span><span class="tag">Рыба</span><span class="tag">Fiskipönnur</span></div>
+    <div class="tags"><span class="tag book-opt">бронь на ужин</span><span class="tag solo">best for solo lunch</span><span class="tag">Рыба</span><span class="tag">Fiskipönnur</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Фирменные «рыбные сковородки» — рыба с овощами и соусом, прямо в сковороде. Шумная морская таверна, где одиночному гостю за маленьким столиком абсолютно уместно — многие гиды называют лучшим местом для соло-обеда.</p>
     <div class="row price"><div class="k">Обед</div><div class="v"><b>3,490–4,290</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v"><b>4,890–6,490</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Обед 11:30–15:00 · ужин 17:00–22:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обед — walk-in; ужин — желательно (за 1–3 дня) · <a href="https://messinn.com" target="_blank" rel="noopener">сайт</a></div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Lækjargata 6b, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://messinn.com" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Messinn+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://messinn.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Messinn+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">7</span>Kaffi Loki</h3>
-    <div class="tags"><span class="tag solo">маленькие столы</span><span class="tag">Традиционная</span><span class="tag">Вид на Hallgrímskirkju</span></div>
+    <div class="tags"><span class="tag walkin">walk-in</span><span class="tag solo">маленькие столы</span><span class="tag">Традиционная</span><span class="tag">Вид на Hallgrímskirkju</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Классика без китча: plokkfiskur, ржаной хлеб с селёдкой, мороженое из ржаного хлеба. Только до раннего вечера.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">Icelandic plate <b>4,290</b> · основное 2,490–3,790</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">не работает на ужин</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 09:00–18:00 (летом до 21:00)</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Не нужна — кафе формат, заходите</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Lokastígur 28, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://loki.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Kaffi+Loki+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://loki.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Kaffi+Loki+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">8</span>Apotek Restaurant</h3>
-    <div class="tags"><span class="tag solo">коктейль-бар</span><span class="tag">Современная</span><span class="tag">Историческое здание</span></div>
+    <div class="tags"><span class="tag book-opt">бронь на ужин</span><span class="tag solo">коктейль-бар</span><span class="tag">Современная</span><span class="tag">Историческое здание</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Старая аптека 1917 года в самом центре. Шеф — финалист Bocuse d'Or. Коктейльная карта поделена на «лекарства» и «стимуляторы» — садитесь за бар и наблюдайте за бариста.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">бизнес-ланч <b>3,990</b></div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v"><b>5,500–8,900</b> · дегустация 11,900</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 11:30–23:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обед — walk-in; ужин — желательно · <a href="https://apotekrestaurant.is" target="_blank" rel="noopener">сайт</a></div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Austurstræti 16, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://apotekrestaurant.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Apotek+Restaurant+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://apotekrestaurant.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Apotek+Restaurant+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">9</span>Snaps Bistro</h3>
-    <div class="tags"><span class="tag solo">бар</span><span class="tag">Бистро</span><span class="tag">Французская × исландская</span></div>
+    <div class="tags"><span class="tag book-opt">бронь на бранч/ужин</span><span class="tag solo">бар</span><span class="tag">Бистро</span><span class="tag">Французская × исландская</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Стеклянная оранжерея, mussels-frites, стейк-фритс, исландская рыба. Любимое место местных.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">бизнес-ланч <b>2,990</b> · бранч 3,490 (вс)</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v"><b>4,500–7,500</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Пн–чт 11:30–23:00 · пт–сб до 24:00 · вс 11:00–23:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Воскресный бранч и ужин — желательно · <a href="https://snaps.is" target="_blank" rel="noopener">сайт</a>. Обед в будни — walk-in</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Þórsgata 1, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://snaps.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Snaps+Bistro+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://snaps.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Snaps+Bistro+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">10</span>Skál!</h3>
-    <div class="tags"><span class="tag solo">барная стойка</span><span class="tag">Small plates</span><span class="tag">Bib Gourmand</span></div>
+    <div class="tags"><span class="tag book-opt">бронь на ужин</span><span class="tag solo">барная стойка</span><span class="tag">Small plates</span><span class="tag">Bib Gourmand</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Из фуд-холла Hlemmur выросли в отдельное место на Njálsgata. Арктический голец, ферментированные закуски, утка с ягодами. Соло — берите стойку и набор small plates.</p>
     <div class="row price"><div class="k">Обед/Ужин</div><div class="v">тарелки <b>2,200–4,500</b> · 3 блюда ~7,500</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 11:30–23:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обед — walk-in; ужин — желательно · <a href="https://skalrvk.com" target="_blank" rel="noopener">сайт</a></div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Njálsgata 1 + Hlemmur Mathöll, 105 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://skalrvk.com" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Skal+Hlemmur+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://skalrvk.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Skal+Hlemmur+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">11</span>Bæjarins Beztu Pylsur</h3>
-    <div class="tags"><span class="tag solo">киоск стоя</span><span class="tag">Хот-дог</span><span class="tag">С 1937</span><span class="tag">Культовое</span></div>
+    <div class="tags"><span class="tag walkin">walk-up</span><span class="tag solo">киоск стоя</span><span class="tag">Хот-дог</span><span class="tag">С 1937</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Главный исландский хот-дог. Сосиска из ягнятины-говядины-свинины, ремуладе, жареный лук. Возьмите «eina með öllu».</p>
     <div class="row price"><div class="k">Цена</div><div class="v">хот-дог <b>690</b> · два + кола ~1,500</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 10:00–01:00 (пт–сб до 04:30)</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Невозможна — киоск с очередью</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Tryggvagata 1, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://bbp.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Baejarins+Beztu+Pylsur+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://bbp.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Baejarins+Beztu+Pylsur+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">12</span>ÓX</h3>
-    <div class="tags"><span class="tag solo">единая стойка 11–17 мест</span><span class="tag">★ Michelin</span><span class="tag">Предоплата</span></div>
+    <div class="tags"><span class="tag book">бронь · за 2–3 мес</span><span class="tag solo">единая стойка 11–17 мест</span><span class="tag">★ Michelin</span><span class="tag">Предоплата</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Спрятан внутри Sumac. Все 11–17 гостей сидят за единой стойкой вокруг открытой кухни — отдельных столов нет, поэтому соло-гость автоматически часть компании. Шеф рассказывает каждый ингредиент.</p>
     <div class="row price"><div class="k">Ужин</div><div class="v">сет с напитками <b>~69,000</b> ISK (предоплата)</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Вт–сб 19:00 (один сервис) · бронь за 2–3 месяца</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна за 2–3 месяца с предоплатой · <a href="https://oxrestaurant.is" target="_blank" rel="noopener">сайт</a></div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Laugavegur 28, 101 Reykjavík (вход через Sumac)</div></div>
     <div class="links">
-      <a class="primary" href="https://oxrestaurant.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=OX+Restaurant+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://oxrestaurant.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=OX+Restaurant+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">13</span>Sumac</h3>
-    <div class="tags"><span class="tag solo">длинная стойка у гриля</span><span class="tag">Левант</span><span class="tag">Угольный гриль</span></div>
+    <div class="tags"><span class="tag book">бронь</span><span class="tag solo">длинная стойка у гриля</span><span class="tag">Левант</span><span class="tag">Угольный гриль</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Левантийский фьюжн с прямой посадкой у открытого угольного гриля. Знаменитые бараньи рёбрышки, шеро-меззе. Атмосфера живая, шумная — соло вы не изолированы за столом, а в центре действия.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">меззе <b>2,500–4,000</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>4,500–9,500</b> · «Sumac Experience» ~12,900</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 17:00–23:00 (бар до 01:00)</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна на выходные (за неделю) · <a href="https://sumac.is" target="_blank" rel="noopener">сайт</a>. Просить место у гриля</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Laugavegur 28, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://sumac.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Sumac+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://sumac.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Sumac+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">14</span>Fiskmarkaðurinn (Fish Market)</h3>
-    <div class="tags"><span class="tag solo">лаунж Uppi / робата</span><span class="tag">Суши</span><span class="tag">Робата-гриль</span></div>
+    <div class="tags"><span class="tag book">бронь</span><span class="tag solo">лаунж Uppi / робата</span><span class="tag">Суши</span><span class="tag">Робата-гриль</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Японско-исландский фьюжн в историческом доме. Соло-гостю — два варианта: лаунж и винный бар Uppi на верхнем этаже для расслабленного ужина или место у робата-гриля внизу с видом на работу поваров.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">бизнес-ланч <b>4,900</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>5,900–11,500</b> · омакасе/сет ~13,900</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 17:30–22:30 · Uppi бар до 24:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна на ужин (за 1 неделю) · <a href="https://fiskmarkadurinn.is" target="_blank" rel="noopener">сайт</a>. Uppi-бар наверху — walk-in</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Aðalstræti 12, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://fiskmarkadurinn.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Fiskmarkadurinn+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://fiskmarkadurinn.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Fiskmarkadurinn+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">15</span>Hósiló</h3>
-    <div class="tags"><span class="tag solo">камерный зал, тёплый приём</span><span class="tag">Семейное</span><span class="tag">Меню недели</span></div>
+    <div class="tags"><span class="tag book">бронь</span><span class="tag solo">камерный зал, тёплый приём</span><span class="tag">Семейное</span><span class="tag">Меню недели</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Маленький семейный ресторан без пафоса. Короткое меню меняется еженедельно — выбор не парализует. Соло-гостей встречают как друзей, а не как клиентов.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">не подаётся</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>4,500–7,500</b> · сет ~10,900</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ср–сб 18:00–22:00 · бронь рекомендуется</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна — мест мало · по телефону / Instagram. Перед посещением проверьте актуальный контакт</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Hverfisgata 12, 101 Reykjavík</div></div>
     <div class="links">
-      <a class="primary" href="https://maps.google.com/?q=Hosilo+Reykjavik" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://www.dineout.is/hosilo" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Hosilo+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
@@ -477,43 +523,46 @@
 
   <article class="card">
     <h3><span class="num">1</span>Tjöruhúsið</h3>
-    <div class="tags"><span class="tag solo">общие столы, викинг-пир</span><span class="tag">Рыбный буфет</span><span class="tag">XVIII век</span><span class="tag">Бронь!</span></div>
+    <div class="tags"><span class="tag book">бронь · обязательна</span><span class="tag solo">общие столы, викинг-пир</span><span class="tag">Рыбный буфет</span><span class="tag">XVIII век</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">«Смоляной дом» — деревянный склад XVIII века. Гости сидят плечом к плечу за длинными деревянными столами; формат буфета и общая атмосфера «викинг-пира» поощряют разговоры с соседями — одиночество исчезает в первую секунду.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">лёгкий <b>3,500–4,500</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">буфет <b>~9,000</b> ISK (всё включено)</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ужин ежедн. ~18:00–21:00 · обед только летом</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна за 1–3 дня · <a href="https://tjoruhusid.is" target="_blank" rel="noopener">сайт</a> или тел. +354 456 4419. В пик сезона — за неделю</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Suðurtangi 1, 400 Ísafjörður</div></div>
     <div class="links">
-      <a class="primary" href="https://tjoruhusid.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Tjoruhusid+Isafjordur" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://tjoruhusid.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Tjoruhusid+Isafjordur" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">2</span>Edinborg Bistro</h3>
-    <div class="tags"><span class="tag solo">тихий зал, окно на гавань</span><span class="tag">Историческое здание</span><span class="tag">Бистро</span></div>
+    <div class="tags"><span class="tag walkin">walk-in</span><span class="tag solo">тихий зал, окно на гавань</span><span class="tag">Историческое здание</span><span class="tag">Бистро</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Бывший шотландский торговый дом 1907 года, теперь — культурный центр. Уха, бургер из ягнятины, рыба дня.</p>
     <div class="row price"><div class="k">Обед</div><div class="v"><b>2,400–4,200</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>4,500–6,800</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Пн–сб 11:30–22:00 · вс 12:00–20:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обычно не нужна; в выходные/события — желательна · <a href="https://edinborg.is" target="_blank" rel="noopener">сайт</a></div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Aðalstræti 7, 400 Ísafjörður</div></div>
     <div class="links">
-      <a class="primary" href="https://edinborg.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Edinborg+Bistro+Isafjordur" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://edinborg.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Edinborg+Bistro+Isafjordur" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">3</span>Logn Restaurant &amp; Bar</h3>
-    <div class="tags"><span class="tag solo">спокойный ужин у фьорда</span><span class="tag">Hotel Ísafjörður</span><span class="tag">Исландский джин</span></div>
+    <div class="tags"><span class="tag book-opt">бронь желательна</span><span class="tag solo">спокойный ужин у фьорда</span><span class="tag">Hotel Ísafjörður</span><span class="tag">Исландский джин</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Тихая альтернатива шумному Tjöruhúsið: ужин с видом на фьорд, бокал исландского джина, стандартное, но качественное исландское меню. Соло-гостю — уединение после социального ужина накануне.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">основное <b>2,900–4,500</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>4,900–7,900</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 18:00–22:00</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Желательна на ужин · <a href="https://hotelisafjordur.is" target="_blank" rel="noopener">сайт отеля</a> или ресепшен</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Silfurtorg 2, 400 Ísafjörður</div></div>
     <div class="links">
-      <a class="primary" href="https://hotelisafjordur.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Hotel+Isafjordur+Logn" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://hotelisafjordur.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Hotel+Isafjordur+Logn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
@@ -523,28 +572,31 @@
 
   <article class="card">
     <h3><span class="num">1</span>Hótel Varmahlíð Restaurant</h3>
-    <div class="tags"><span class="tag solo">спокойный обеденный зал</span><span class="tag">Отель</span><span class="tag">Ягнятина Скагафьордура</span></div>
+    <div class="tags"><span class="tag book-opt">бронь желательна</span><span class="tag solo">спокойный обеденный зал</span><span class="tag">Отель</span><span class="tag">Ягнятина Скагафьордура</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Практически единственный «настоящий» ресторан на перекрёстке Кольцевой. Простая, честная исландская кухня.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">суп + хлеб <b>2,500</b> · основное 3,800–5,500</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>5,500–8,500</b> · ягнятина ~7,500</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ужин ежедн. 18:00–21:00 · обед только летом</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Желательна на ужин (мало мест) · <a href="https://hotelvarmahlid.is" target="_blank" rel="noopener">сайт</a> или ресепшен</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Varmahlíð, 560 Varmahlíð</div></div>
     <div class="links">
-      <a class="primary" href="https://hotelvarmahlid.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Hotel+Varmahlid" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://hotelvarmahlid.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Hotel+Varmahlid" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">2</span>Lónkot Sjávarbarinn <span style="color:var(--muted);font-weight:500;font-size:13px;">· ~30 км</span></h3>
-    <div class="tags"><span class="tag solo">фермерский дом у моря</span><span class="tag">Морская кухня</span><span class="tag">Только лето</span></div>
+    <div class="tags"><span class="tag book-opt">бронь желательна</span><span class="tag solo">фермерский дом у моря</span><span class="tag">Морская кухня</span><span class="tag">Только лето</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Гестхаус-ресторан на побережье Скагафьордура. Шеф-хозяин использует только локальный улов и сбор.</p>
     <div class="row price"><div class="k">Обед</div><div class="v"><b>3,200–4,500</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">основное <b>5,500–8,500</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Июнь–август ежедн. ~12:00–21:00 · бронь</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Желательна — по телефону / Facebook. Перед поездкой проверьте сезон</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Lónkot, 566 Hofsós (дорога 76)</div></div>
     <div class="links">
-      <a class="primary" href="https://maps.google.com/?q=Lonkot+Iceland" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://www.dineout.is/lonkot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Lonkot+Iceland" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
@@ -554,28 +606,30 @@
 
   <article class="card">
     <h3><span class="num">1</span>Brimslóð Atelier</h3>
-    <div class="tags"><span class="tag solo">общий стол в 19:30</span><span class="tag">Авторская</span><span class="tag">Бронь ≥ 24 ч</span></div>
+    <div class="tags"><span class="tag book">бронь · обязательна ≥ 24 ч</span><span class="tag solo">общий стол в 19:30</span><span class="tag">Авторская</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Ужин подаётся за большим общим столом ровно в 19:30. Владельцы — авторы кулинарных книг — лично общаются с гостями, рассказывая об истории исландских продуктов. Соло — провести вечер в интересной компании.</p>
     <div class="row price"><div class="k">Ужин</div><div class="v">сет 3 блюда <b>~9,900</b> ISK</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Общий ужин 19:30 · бронь минимум за сутки</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Обязательна минимум за сутки · <a href="https://brimslodguesthouse.is" target="_blank" rel="noopener">сайт</a> или email. Один общий ужин в 19:30 — без брони не пустят</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Brimslóð 3, 540 Blönduós</div></div>
     <div class="links">
-      <a class="primary" href="https://brimslodguesthouse.is" target="_blank" rel="noopener">Сайт</a>
-      <a href="https://maps.google.com/?q=Brimslod+Atelier+Blonduos" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://brimslodguesthouse.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Brimslod+Atelier+Blonduos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 
   <article class="card">
     <h3><span class="num">2</span>Teni</h3>
-    <div class="tags"><span class="tag solo">уютное место, щедрые порции</span><span class="tag">Эфиопская</span><span class="tag">Исландская рыба</span></div>
+    <div class="tags"><span class="tag walkin">walk-in</span><span class="tag solo">уютное место, щедрые порции</span><span class="tag">Эфиопская</span><span class="tag">Исландская рыба</span></div>
     <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Неожиданный поворот посреди Кольцевой дороги: эфиопский ват и инджера или классическая исландская рыба. Спокойная атмосфера, очень щедрые порции — идеально отдохнуть в пути одному.</p>
     <div class="row price"><div class="k">Обед</div><div class="v">основное <b>2,800–4,200</b> ISK</div></div>
     <div class="row price"><div class="k">Ужин</div><div class="v">эфиопское блюдо <b>3,900–5,500</b> · рыба 4,500–6,500</div></div>
     <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 12:00–21:00 (зимой сокращённо)</div></div>
+    <div class="row"><div class="k">Бронь</div><div class="v">Не нужна — заходите. Большим компаниям лучше позвонить</div></div>
     <div class="row"><div class="k">Адрес</div><div class="v">Norðurlandsvegur, 540 Blönduós</div></div>
     <div class="links">
-      <a class="primary" href="https://www.dineout.is/teni" target="_blank" rel="noopener">Меню</a>
-      <a href="https://maps.google.com/?q=Teni+Blonduos" target="_blank" rel="noopener">Карта</a>
+      <a class="primary" href="https://www.dineout.is/teni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Меню</a>
+      <a href="https://maps.google.com/?q=Teni+Blonduos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
     </div>
   </article>
 

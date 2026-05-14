@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<title>Музеи и культурные места Исландии</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-soft: #161922;
+    --card: #1b1f2a;
+    --card-2: #20253199;
+    --line: #2a3040;
+    --text: #e7e9ee;
+    --muted: #9aa3b2;
+    --accent: #b8a5ff;
+    --accent-2: #b8e0c2;
+    --warn: #ffd28a;
+    --price: #f2efe6;
+    --radius: 16px;
+    --pad: 16px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f4ef;
+      --bg-soft: #efece4;
+      --card: #ffffff;
+      --card-2: #ffffffcc;
+      --line: #e3ddd1;
+      --text: #1a1d23;
+      --muted: #5a6472;
+      --accent: #5d3fa3;
+      --accent-2: #2f6b4d;
+      --warn: #8a5b00;
+      --price: #1a1d23;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 24px) env(safe-area-inset-left);
+  }
+  header.hero {
+    padding: 28px var(--pad) 12px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+    position: relative;
+  }
+  header.hero h1 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+  header.hero p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  nav.cities {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 10px var(--pad);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  nav.cities::-webkit-scrollbar { display: none; }
+  nav.cities a {
+    display: inline-block;
+    padding: 7px 12px;
+    margin-right: 6px;
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13.5px;
+    border: 1px solid var(--line);
+  }
+  nav.cities a:active { transform: scale(0.97); }
+
+  main { padding: 8px var(--pad) 0; max-width: 720px; margin: 0 auto; }
+
+  .note {
+    margin: 14px 0 6px;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .note b { color: var(--warn); font-weight: 600; }
+
+  h2.city {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 28px 4px 10px;
+    font-weight: 600;
+  }
+  h2.city span { color: var(--text); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 16px 4px;
+    margin: 0 0 12px;
+  }
+  .card h3 {
+    font-size: 18px;
+    line-height: 1.25;
+    margin: 0 0 6px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+  }
+  .card h3 .num {
+    color: var(--muted);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .tags {
+    margin: 4px 0 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 11.5px;
+    color: var(--muted);
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .tag.hl {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+    font-weight: 500;
+  }
+  .row {
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 10px;
+    font-size: 14.5px;
+  }
+  .row:first-of-type { border-top: none; padding-top: 4px; }
+  .row .k {
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 2px;
+  }
+  .row .v { color: var(--text); }
+  .row.price .v { color: var(--price); }
+  .row.price .v b { color: var(--accent-2); font-weight: 600; }
+
+  .links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 0 14px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .links a.primary {
+    background: color-mix(in srgb, var(--accent) 18%, var(--bg-soft));
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+    color: var(--accent);
+  }
+  .links a:active { transform: scale(0.98); }
+  .links a svg { width: 14px; height: 14px; flex: none; }
+
+  footer {
+    color: var(--muted);
+    font-size: 13px;
+    padding: 32px var(--pad) 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  footer h2 {
+    color: var(--text);
+    font-size: 15px;
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+  footer ul { margin: 0 0 0 18px; padding: 0; }
+  footer li { margin: 6px 0; }
+  footer b { color: var(--text); font-weight: 600; }
+
+  .to-top {
+    display: block;
+    text-align: center;
+    margin: 28px auto 0;
+    padding: 10px 16px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  @media (min-width: 640px) {
+    header.hero h1 { font-size: 28px; }
+    .row { grid-template-columns: 100px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Музеи и культурные места</h1>
+  <p>Рейкьявик · Исафьордур · Вармахлид · Блёндюос</p>
+</header>
+
+<nav class="cities" aria-label="Города">
+  <a href="#reykjavik">Рейкьявик</a>
+  <a href="#isafjordur">Исафьордур</a>
+  <a href="#varmahlid">Вармахлид</a>
+  <a href="#blonduos">Блёндюос</a>
+  <a href="#tips">Советы</a>
+</nav>
+
+<main>
+
+  <div class="note">
+    <b>Важно.</b> Часы и цены актуальны на 2026-05-13. Список собран под майский визит — сезонные музеи, закрытые в мае (Ósvör Maritime, Textile Museum Blönduós, Sea Ice Centre), убраны. Цены в ISK (1 EUR ≈ 150, 1 USD ≈ 140).
+  </div>
+
+  <div class="note" style="margin-top:8px;">
+    <b>Reykjavík City Card</b> на 24/48/72 ч (~4,500/6,500/8,500 ISK) включает большинство музеев Рейкьявика и бассейны — окупается при 2–3 посещениях в день.
+  </div>
+
+  <!-- REYKJAVIK -->
+  <h2 class="city" id="reykjavik">Город · <span>Рейкьявик</span></h2>
+
+  <article class="card">
+    <h3><span class="num">1</span>Hallgrímskirkja</h3>
+    <div class="tags"><span class="tag hl">Символ города</span><span class="tag">Архитектура</span><span class="tag">Смотровая</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Самая узнаваемая церковь Исландии: 74,5-метровый фасад в форме базальтовых колонн (Свартифосс). Поднимитесь на смотровую — лучшая панорама города. Внутри — массивный орган Klais на 5275 труб; летом регулярно проходят концерты.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">вход бесплатно · башня <b>~1,400</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 09:00–21:00 (летом), 10:00–17:00 (зимой)</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Hallgrímstorg 1, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://hallgrimskirkja.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Hallgrimskirkja+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">2</span>Alþingishúsið (Парламент)</h3>
+    <div class="tags"><span class="tag hl">Государственность</span><span class="tag">1881</span><span class="tag">Бесплатно</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Главное здание Альтинга — старейшего парламента мира (с 930 г.) — построено в 1881 из исландского долерита. Стоит на площади Austurvöllur у собора Domkirkjan. Снаружи — символ исландской государственности, частые демонстрации и национальные церемонии. Внутрь — только в дни открытых дверей или с летними экскурсиями (нужна предв. запись).</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">Снаружи бесплатно · экскурсии летом бесплатно</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Фасад доступен всегда · экскурсии июнь–август, вт/пт утром</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Kirkjustræti, 101 Reykjavík (Austurvöllur)</div></div>
+    <div class="links">
+      <a class="primary" href="https://althingi.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Althingishusid+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">3</span>Ráðhús Reykjavíkur (Мэрия)</h3>
+    <div class="tags"><span class="tag hl">Архитектура</span><span class="tag">Studio Granda</span><span class="tag">Бесплатно</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Модернистское здание 1992 года, частично нависает над прудом Tjörnin — бетон и базальт сливаются с водой. Внутри — огромная <b>3D-рельефная карта Исландии</b> (бесплатно, впечатляющая), кафе с видом на пруд, ротация фото- и арт-выставок, инфо-центр. Идеальная 30-минутная остановка по пути.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">Бесплатно</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Пн–пт 08:00–19:00 · сб–вс 12:00–18:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Tjarnargata 11, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://reykjavik.is/radhus" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Reykjavik+City+Hall" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">4</span>Harpa Concert Hall</h3>
+    <div class="tags"><span class="tag hl">Архитектура</span><span class="tag">Концерты</span><span class="tag">Бесплатно</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Стеклянные «соты» фасада спроектированы Олафуром Элиассоном (тем самым) и Henning Larsen — отражают свет фьорда и небо. Зайти в холлы можно бесплатно в любое время. Концерты Iceland Symphony, оперные постановки, иногда мультимедиа-шоу.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">Холлы бесплатно · гид-тур <b>~2,500</b> · концерты от 4,500</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Холлы ежедн. 08:00–24:00 · тур 11:00 и 15:30</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Austurbakki 2, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://harpa.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Harpa+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">5</span>Þjóðminjasafn Íslands (Национальный музей)</h3>
+    <div class="tags"><span class="tag hl">Must-see</span><span class="tag">История</span><span class="tag">Викинги</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Главный исторический музей: от поселения IX века до современности. Меч из Hofstaðir, средневековые резные двери Valþjófsstaðir, серебряный клад Miðhús, костюмы и предметы быта. Лучший единый снимок исландской культуры — закладывайте 2–3 часа.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~2,500</b> ISK · до 18 бесплатно</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Май–сент. ежедн. 10:00–17:00 · окт.–апр. вт–вс</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Suðurgata 41, 102 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://thjodminjasafn.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Thjodminjasafn+Islands" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">6</span>Landnámssýningin (The Settlement Exhibition · 871±2)</h3>
+    <div class="tags"><span class="tag hl">Археология</span><span class="tag">Викинги</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Подземный музей вокруг археологических остатков викингского длинного дома X века — найден случайно при стройке отеля. Сами стены под стеклянным полом, вокруг — интерактивные экраны, реконструкции. Компактно (1 час), но мощно.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~2,300</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 10:00–17:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Aðalstræti 16, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://reykjavikcitymuseum.is/the-settlement-exhibition" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Settlement+Exhibition+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">7</span>Perlan</h3>
+    <div class="tags"><span class="tag hl">Природа</span><span class="tag">Ледяная пещера</span><span class="tag">Планетарий</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Стеклянный купол на холмах Öskjuhlíð: настоящая ледяная пещера (–15 °C, выдают парки), планетарий «Северное сияние», экспозиция «Чудеса Исландии» — вулканы, ледники, океан, птицы. Лучший музей о природе страны. Смотровая бесплатно даже без билета.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">полный пакет <b>~6,990</b> · только смотровая бесплатно</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 09:00–22:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Varmahlíð 1, 105 Reykjavík (холм Öskjuhlíð)</div></div>
+    <div class="links">
+      <a class="primary" href="https://perlan.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Perlan+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">8</span>Reykjavík Art Museum · Hafnarhús</h3>
+    <div class="tags"><span class="tag hl">Современное искусство</span><span class="tag">Erró</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Главное здание муниципального художественного — в бывшем портовом складе. Постоянная коллекция Erró (поп-арт исландского классика) + ротация современных исландских и международных художников. Один билет работает 24 ч в трёх локациях: Hafnarhús, Kjarvalsstaðir, Ásmundarsafn.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">3 музея 24 ч <b>~2,200</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 10:00–17:00, чт до 22:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Tryggvagata 17, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://artmuseum.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Hafnarhus+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">9</span>Listasafn Íslands (Национальная галерея)</h3>
+    <div class="tags"><span class="tag hl">Исландское искусство</span><span class="tag">Kjarval</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Главная коллекция исландской живописи: пейзажи Þórarinn B. Þorláksson, мистический Kjarval, экспрессивный Ásgrímur Jónsson. Маленькая, но плотная экспозиция в особняке у пруда Tjörnin. 1–1,5 часа.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~2,500</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Вт–вс 10:00–17:00 · пн выходной</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Fríkirkjuvegur 7, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://listasafn.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Listasafn+Islands" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">10</span>Árbær Open Air Museum (Árbæjarsafn)</h3>
+    <div class="tags"><span class="tag hl">Под открытым небом</span><span class="tag">В мае: только сб–вс</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">20+ исторических домов XVIII–XX веков, перенесённых сюда со всего Рейкьявика. Дерновые крыши, аптека, кузница, школа, церковь. Летом — актёры в одежде эпохи, ремёсла, домашние животные. На окраине — автобус №12 или такси.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~2,200</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">В мае только сб–вс 13:00–17:00 · с 1 июня ежедн. 10:00–17:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Kistuhylur 4, 110 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://reykjavikcitymuseum.is/arbaer-open-air-museum" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Arbaer+Open+Air+Museum" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">11</span>Whales of Iceland</h3>
+    <div class="tags"><span class="tag hl">Природа</span><span class="tag">Жизнеразмерные модели</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">23 жизнеразмерные модели всех видов китов исландских вод — включая 25-метрового синего кита, висящего под потолком. Тихий полумрак, амбиентный звук, аудиогид. Медитативно — масштаб впечатляет даже без живой природы.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~3,800</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 10:00–17:00 (летом до 18:00)</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Fiskislóð 23–25, 101 Reykjavík (гавань Granda)</div></div>
+    <div class="links">
+      <a class="primary" href="https://whalesoficeland.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Whales+of+Iceland+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">12</span>Icelandic Phallological Museum</h3>
+    <div class="tags"><span class="tag hl">Странное</span><span class="tag">Единственное в мире</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Единственный в мире музей фаллосов: 280+ образцов от полевой мыши до синего кита, плюс «человеческие» экспонаты. Странно, смешно и неожиданно образовательно — это серьёзная зоологическая коллекция в шутливой подаче. Час, не больше.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~3,500</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 10:00–19:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Kalkofnsvegur 2, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://phallus.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Phallological+Museum+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">13</span>Icelandic Punk Museum</h3>
+    <div class="tags"><span class="tag hl">Музыка</span><span class="tag">15 минут</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Расположен в бывшем общественном туалете под улицей Bankastræti. Бьорк, Sugarcubes, Þeyr, исландская альтернатива 80-х. Инструменты, кассеты, плакаты, наушники с записями. 15–20 минут — но абсолютно «Рейкьявик».</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~1,500</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Ежедн. 10:00–22:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Bankastræti 2, 101 Reykjavík (вход с улицы, спуститься)</div></div>
+    <div class="links">
+      <a class="primary" href="https://maps.google.com/?q=Icelandic+Punk+Museum" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">14</span>Norræna húsið (Nordic House)</h3>
+    <div class="tags"><span class="tag hl">Архитектура</span><span class="tag">Alvar Aalto</span><span class="tag">Бесплатно</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Здание-памятник Alvar Aalto (1968) — синяя черепичная крыша, светлый интерьер, виды на пруд. Внутри — галерея, библиотека скандинавской литературы, кафе с известными бутербродами smörrebröd. Архитектурная ценность; вход в основные пространства бесплатный.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">бесплатно · спецвыставки ~1,500 ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Вт–вс 10:00–17:00 (библиотека до 17:00)</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Sturlugata 5, 101 Reykjavík</div></div>
+    <div class="links">
+      <a class="primary" href="https://nordichouse.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Nordic+House+Reykjavik" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+
+  <!-- ISAFJORDUR -->
+  <h2 class="city" id="isafjordur">Город · <span>Исафьордур</span></h2>
+
+  <article class="card">
+    <h3><span class="num">1</span>Byggðasafn Vestfjarða (Westfjords Heritage Museum)</h3>
+    <div class="tags"><span class="tag hl">Душа Вестфьордов</span><span class="tag">Море</span><span class="tag">Аккордеоны</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Расположен в старых деревянных складах XIX века в Neðstikaupstaður (старый портовый квартал — тот же, где Tjöruhúsið). Китобойный промысел, рыбацкий быт, коллекция аккордеонов (один из лучших в Скандинавии), редкие фотографии деревни. Душа Вестфьордов в одном здании.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~1,800</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Май–сент. ежедн. 10:00–17:00 · зимой по запросу</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Suðurtangi 19, 400 Ísafjörður</div></div>
+    <div class="links">
+      <a class="primary" href="https://nedsti.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Westfjords+Heritage+Museum" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">2</span>Safn Hversdagsins (Museum of Everyday Life)</h3>
+    <div class="tags"><span class="tag hl">Уникальное</span><span class="tag">Истории людей</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Один из самых необычных маленьких музеев Исландии. Тема — «жизнь обычных людей»: личные истории жителей Исафьордура, простые предметы, аудиозаписи воспоминаний. Не «слава великих», а интимный взгляд изнутри северного городка. Экспозиция меняется каждый год.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~1,800</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Лето ежедн. 13:00–18:00 · зимой по запросу</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Aðalstræti 24, 400 Ísafjörður</div></div>
+    <div class="links">
+      <a class="primary" href="https://museumofeverydaylife.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Museum+of+Everyday+Life+Isafjordur" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <div class="note">
+    <i>Ósvör Maritime Museum в Bolungarvík (~15 км) — лучший выбор для аутентичной рыбацкой хижины, но открыт только с 1 июня.</i>
+  </div>
+
+
+  <!-- VARMAHLID -->
+  <h2 class="city" id="varmahlid">Город · <span>Вармахлид</span></h2>
+
+  <article class="card">
+    <h3><span class="num">1</span>Glaumbær Turf Farm Museum <span style="color:var(--muted);font-weight:500;font-size:13px;">· ~7 км</span></h3>
+    <div class="tags"><span class="tag hl">Must-see региона</span><span class="tag">Дерновая ферма</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Знаменитая дерновая ферма XVIII–XIX веков: комплекс из 13 связанных комнат под общей дерновой крышей. Один из лучших сохранившихся образцов исландской «архитектуры из земли». Внутри — оригинальная мебель, кухня, кладовые. Если из вашего маршрута есть один музей в регионе — это он.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~2,000</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Апр.–окт. ежедн. 09:00–18:00 · зимой закрыто</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Glaumbær, 560 Varmahlíð</div></div>
+    <div class="links">
+      <a class="primary" href="https://glaumbaer.is" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Сайт</a>
+      <a href="https://maps.google.com/?q=Glaumbaer+Iceland" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3><span class="num">2</span>Víðimýrarkirkja (Дерновая церковь) <span style="color:var(--muted);font-weight:500;font-size:13px;">· ~3 км</span></h3>
+    <div class="tags"><span class="tag hl">Редкая дерновая церковь</span><span class="tag">1834</span></div>
+    <p style="margin:0 0 14px;color:var(--muted);font-size:14.5px;">Одна из шести сохранившихся дерновых церквей Исландии (1834). Внутри — простой деревянный алтарь, резные потолочные балки, узкие лавки. Снаружи — кладбище с поросшими мхом плитами. Маленькая, тихая, фотогеничная — 30 минут хватит.</p>
+    <div class="row price"><div class="k">Цена</div><div class="v">взрослый <b>~1,200</b> ISK</div></div>
+    <div class="row"><div class="k">Часы</div><div class="v">Май–сент. ежедн. 09:00–18:00</div></div>
+    <div class="row"><div class="k">Адрес</div><div class="v">Víðimýri, 560 Varmahlíð</div></div>
+    <div class="links">
+      <a class="primary" href="https://maps.google.com/?q=Vidimyrarkirkja" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Google Maps</a>
+    </div>
+  </article>
+
+
+  <!-- BLONDUOS -->
+  <h2 class="city" id="blonduos">Город · <span>Блёндюос</span></h2>
+
+  <div class="note">
+    <b>В мае оба основных музея Блёндюоса закрыты</b> (сезон июнь–август). На случай поездки в сезон:
+    <ul style="margin:8px 0 0 18px; padding:0;">
+      <li><b>Heimilisiðnaðarsafnið (Textile Museum)</b> — исландский текстиль, костюмы, лопапейсы. Árbraut 29 · <a href="https://textile.is" target="_blank" rel="noopener">textile.is</a></li>
+      <li><b>Hafíssetrið (Sea Ice Centre)</b> — морской лёд и арктическое судоходство. Hillebrandtshús, Hafnarbraut 1</li>
+    </ul>
+    В мае Блёндюос — короткая остановка по пути: прогулка к устью реки Блонда, ужин в Brimslóð Atelier или Teni.
+  </div>
+
+</main>
+
+<footer id="tips">
+  <h2>Советы по культурному маршруту</h2>
+  <ul>
+    <li><b>Reykjavík City Card.</b> 24/48/72 ч за ~4,500/6,500/8,500 ISK покрывает большинство музеев Рейкьявика (Þjóðminjasafn, Settlement, все три филиала Art Museum, Árbær, Maritime) + бассейны + общественный транспорт. Окупается с 2–3 музеев.</li>
+    <li><b>Один билет на 3 музея.</b> Reykjavík Art Museum: Hafnarhús + Kjarvalsstaðir + Ásmundarsafn — один тикет действует 24 часа.</li>
+    <li><b>Понедельники.</b> Listasafn Íslands, Nordic House и некоторые другие закрыты по понедельникам.</li>
+    <li><b>Майские особенности.</b> В мае ещё не открыты для ежедневного приёма Ósvör (Bolungarvík), Textile Museum и Hafíssetrið (Блёндюос) — все стартуют с 1 июня. Árbær в мае — только сб–вс. Внутри Парламента — экскурсии только летом, в мае только фасад.</li>
+    <li><b>Glaumbær в маршруте.</b> Если едете по Кольцевой через Север — это must-stop, всего 7 км от трассы у Вармахлида. Часа хватает.</li>
+    <li><b>Лайфхак для Hallgrímskirkja.</b> Утром до 10:00 на смотровой почти нет туристов.</li>
+  </ul>
+  <a class="to-top" href="#">↑ Наверх</a>
+</footer>
+
+</body>
+</html>
